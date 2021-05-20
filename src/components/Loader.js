@@ -6,7 +6,7 @@ import { LoaderWrapper } from '../styles/loaderStyles'
 const Loader = () => {
     return (
       <LoaderWrapper>
-        <div class="lds-ellipsis">
+        <div className="lds-ellipsis">
           <div></div>
           <div></div>
           <div></div>

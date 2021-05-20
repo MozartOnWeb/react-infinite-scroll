@@ -10,5 +10,7 @@ export const GlobalStyles = createGlobalStyle`
     body {
         font-family: 'Oswald', sans-serif;
         font-weight: 300;
+        background-color: #010101;
+        color: #fff;
     }
 `;

@@ -23,7 +23,7 @@ export const ImagesProvider = ({ children }) => {
     };
     
   return (
-    <ImageContext.Provider value={[images, setImages]} value2={fetchImages()}>
+    <ImageContext.Provider value={[images, setImages]} value2={fetchImages} >
       {children}
     </ImageContext.Provider>
   );

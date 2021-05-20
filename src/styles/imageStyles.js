@@ -8,7 +8,7 @@ export const ImageWrapper = styled.div`
     display: -webkit-box; /* Not needed if autoprefixing */
     display: -ms-flexbox; /* Not needed if autoprefixing */
     display: flex;
-    margin-left: 0px; /* gutter size offset */
+    margin-left: -20px; /* gutter size offset */
     width: auto;
   }
   .my-masonry-grid_column {
@@ -26,4 +26,13 @@ export const ImageWrapper = styled.div`
 
 export const Img = styled.img`
   width: 100%;
+  border-radius: 10px;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.5s ease-in-out;
+  &:hover {
+    border-radius: 0px;
+    filter: grayscale(100%);
+    -webkit-filter: grayscale(100%);
+  }
 `;

@@ -15,7 +15,7 @@ export const LoaderWrapper = styled.div`
     width: 13px;
     height: 13px;
     border-radius: 50%;
-    background: #000000;
+    background: #fff;
     animation-timing-function: cubic-bezier(0, 1, 1, 0);
   }
   .lds-ellipsis div:nth-child(1) {

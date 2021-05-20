@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
+import React, { useState, useEffect } from "react";
 
-// Import Context
-import { ImageContext } from "./ImageContext";
+// Import Axios
+import axios from "axios";
 
 // Import Components
 import { Heading, Loader, Image } from "./components";
@@ -17,8 +17,29 @@ import Masonry from "react-masonry-css";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 function App() {
-  const [images] = useContext(ImageContext);
-  const fetchImages = useContext(ImageContext);
+  // Fetch Images from Unsplash API
+
+  const [images, setImages] = useState([]);
+
+  useEffect(() => {
+    fetchImages();
+  }, []);
+
+  const fetchImages = () => {
+    const apiRoot = "https://api.unsplash.com";
+    const accessKey = process.env.REACT_APP_UNSPLASHKEY;
+    axios
+      .get(`${apiRoot}/collections/3356576/photos?client_id=${accessKey}`)
+      .then((res) => setImages([...images, ...res.data]));
+  };
+
+  // Masonry BreakPoint Setting
+  const breakpoint = {
+    default: 3,
+    1100: 3,
+    700: 2,
+    500: 1,
+  };
 
   return (
     <div className="App">
@@ -29,14 +50,14 @@ function App() {
         next={fetchImages}
         hasMore={true}
         loader={<Loader />}
-        scrollThreshold={0.9}>
+        scrollThreshold={1}>
         <ImageWrapper>
           <Masonry
-            breakpointCols={3}
+            breakpointCols={breakpoint}
             className="my-masonry-grid"
             columnClassName="my-masonry-grid_column">
             {images.map((image) => (
-              <Image url={image.urls.thumb} key={image.id} />
+              <Image url={image.urls.small} key={image.id} />
             ))}
           </Masonry>
         </ImageWrapper>
