@@ -32,6 +32,7 @@ export const Img = styled.img`
   transition: all 0.5s ease-in-out;
   &:hover {
     border-radius: 0px;
+    opacity: .5;
     filter: grayscale(100%);
     -webkit-filter: grayscale(100%);
   }

@@ -17,8 +17,8 @@ import Masonry from "react-masonry-css";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 function App() {
-  // Fetch Images from Unsplash API
 
+  // Fetch Images from Unsplash API
   const [images, setImages] = useState([]);
 
   useEffect(() => {
@@ -29,7 +29,9 @@ function App() {
     const apiRoot = "https://api.unsplash.com";
     const accessKey = process.env.REACT_APP_UNSPLASHKEY;
     axios
-      .get(`${apiRoot}/collections/3356576/photos?client_id=${accessKey}`)
+      .get(
+        `${apiRoot}/photos/random?client_id=${accessKey}&count=5&collections=3356576`,
+      )
       .then((res) => setImages([...images, ...res.data]));
   };
 
